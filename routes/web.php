@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response('Invalid API Usage.');
 });
+
+Route::post('/api/1.0/users/add','UsersController@add');
