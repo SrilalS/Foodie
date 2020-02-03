@@ -50,4 +50,13 @@ class FoodsController extends Controller
 
         return response()-> json(['Food'=>$name],200);
     }
+
+    public function foodsearch(Request $request){
+
+        $key = $request->input('key');
+
+        $name = DB::table('foods')->where('name',$key)->get();
+
+        return response()-> json(['Results'=>$name],200);
+    }
 }
