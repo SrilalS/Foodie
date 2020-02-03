@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response('Invalid API Usage.');
 });
+
+Route::post('/api/1.0/users/add','UsersController@add');
+
+Route::post('/api/1.0/users/login','UsersController@login');
+
+Route::post('/api/1.0/foods/add','FoodsController@addFood');
+
+Route::get('/api/1.0/foods/get/all','FoodsController@getFood');
+
+Route::get('/api/1.0/foods/get/oneshop','FoodsController@getFoodfromOneShop');
+
+Route::get('/api/1.0/foods/get/search','FoodsController@foodsearch');
