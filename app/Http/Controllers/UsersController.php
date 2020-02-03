@@ -17,7 +17,7 @@ class UsersController extends Controller
         $lname = $request->input('lname');
         $stdid = $request->input('stdid');
 
-        $pws = $request->input('pws');
+        $pws = $request->input('password');
         $mobile = $request->input('mobile');
 
         $nic = $request->input('nic');
@@ -56,7 +56,7 @@ class UsersController extends Controller
         DB::table('users')->insert([
             'nic'=>$nic,
             'mobile'=>$mobile,
-            'password'=>Hash::make($pws),
+            'password'=>hash('sha256', $pws),
             'email' => $email,
             'stdid' => $stdid,
             'dob'=> $dob,
@@ -78,19 +78,39 @@ class UsersController extends Controller
         $stdid = $requestget->input('stdid');
         $pws = $requestget->input('password');
 
-        $checkpws = DB::table('users')->select('password')->where('password','=',$pws)->get();
-        $checkstdid = DB::table('users')->select('stdid')->where('stdid','=',$stdid)->get();
+        $checkpws = DB::table('users')->where('stdid',$stdid)->value('password');
+        $checkstdid = DB::table('users')->where('stdid',$stdid)->value('stdid');
 
-        if ($stdid == $checkstdid){
-            if (Hash::check($pws, $checkpws)) {
-                // The passwords match...
+        if ($stdid === $checkstdid){
+            if (hash('sha256', $pws)== $checkpws) {
+                return response()->json(['code'=>'Success!'],200);
             } else {
-                return response()->json(['code'=>'Wrong Student ID or Password!'],400);
+                return response()->json(['code'=>'Wrong Student ID or Password!'],401);
             }
         } else {
-            return response()->json(['code'=>'Wrong Student ID or Password!'],400);
+            return response()->json(['code'=>'Wrong Student ID or Password!'],402);
         }
 
+        
+    }
+
+    public function update(Request $requestupdate){
+        $fname = $request->input('fname');
+        $lname = $request->input('lname');
+        $stdid = $request->input('stdid');
+
+        $pws = $request->input('password');
+        $mobile = $request->input('mobile');
+
+        $nic = $request->input('nic');
+        $email = $request->input('email');
+        $dob = $request->input('dob');
+
+        $faculty = $request->input('faculty');
+        $batch = $request->input('batch');
+        $avatar = $request->input('avatar');
+
+        //TO-DO//
         
     }
 }
