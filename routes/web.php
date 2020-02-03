@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::post('/api/1.0/users/add','UsersController@add');
+Route::post('/api/1.0/users/login','UsersController@login');
