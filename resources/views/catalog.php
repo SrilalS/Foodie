@@ -41,10 +41,10 @@
                                 <div class="filters">
                                     <div class="filter-item">
                                         <h3>Categories</h3>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Breakfirst</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Launch</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Drinks</label></div>
-                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Short-Eats</label></div>
+                                        <div class="form-check"><input id="bfirst" class="form-check-input" type="checkbox" >Breakfirst</label></div>
+                                        <div class="form-check"><input id="launch" class="form-check-input" type="checkbox" >Launch</label></div>
+                                        <div class="form-check"><input id="drinks" class="form-check-input" type="checkbox" >Drinks</label></div>
+                                        <div class="form-check"><input id="seats" class="form-check-input" type="checkbox" >Short-Eats</label></div>
                                     </div>
                                     <div class="filter-item">
                                         <h3>Canteens</h3>
@@ -98,8 +98,8 @@
                                     $shopid = $arc[$i]['shopid'];
                                     echo <<<ITM
 
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="clean-product-item">
+                                    <div class="">
+                                        <div class="clean-product-item $shopid">
                                             <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.png"></a></div>
                                             <div class="product-name"><a href="#">$name</a></div>
                                             <h5>$desc</h5>
@@ -128,46 +128,11 @@
         </section>
     </main>
     <footer class="page-footer dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="footer-copyright">
             <p>© 2020 Foodie.com</p>
         </div>
     </footer>
+    <script src="assets/js/catalog.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>

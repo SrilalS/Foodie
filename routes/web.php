@@ -19,6 +19,10 @@ Route::get('/catalog', function () {
     return view('catalog');
 });
 
+Route::get('/product', function () {
+    return view('product');
+});
+
 //API
 
 //Users
