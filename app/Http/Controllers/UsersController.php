@@ -73,7 +73,7 @@ class UsersController extends Controller
 
         
     }
-
+    
     public function login(Request $requestget){
         $stdid = $requestget->input('stdid');
         $pws = $requestget->input('password');

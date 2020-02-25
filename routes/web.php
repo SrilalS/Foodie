@@ -10,10 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//UI
 Route::get('/', function () {
-    return response('Invalid API Usage.');
+    return view('login');
 });
+
+Route::get('/catalog', function () {
+    return view('catalog');
+});
+
+//API
 
 //Users
 Route::post('/api/1.0/users/add','UsersController@add');
