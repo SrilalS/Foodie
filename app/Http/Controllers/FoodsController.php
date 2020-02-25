@@ -17,6 +17,8 @@ class FoodsController extends Controller
 
         $price = $request->input('price');
 
+        $amount = $request->input('amount');
+
         $shopid = $request->input('shopid');
 
         $desc = $request->input('desc');
@@ -26,6 +28,7 @@ class FoodsController extends Controller
         DB::table('foods')->insert([
             'name'=>$name,
             'price'=>$price,
+            'amount'=>$amount,
             'desc' => $desc,
             'shopid' => $shopid,
         ],);
