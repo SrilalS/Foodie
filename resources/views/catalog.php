@@ -94,36 +94,32 @@
                                     $name = $arc[$i]['name'];
                                     $price = $arc[$i]['price'];
                                     $desc = $arc[$i]['desc'];
+                                    $tag = 'temp';
+                                    $shopid = $arc[$i]['shopid'];
                                     echo <<<ITM
+
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <div class="clean-product-item">
                                             <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.png"></a></div>
                                             <div class="product-name"><a href="#">$name</a></div>
+                                            <h5>$desc</h5>
+                                            <h1 hidden>$shopid</h1>
                                             <div class="about">
+
+                                            <br>
                                             <div class="price">
                                                     <h3>LKR $price/=</h3>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     ITM;
 
                                 }
-
-
-                                //$response = file_get_contents('http://127.0.0.1:8001/api/1.0/foods/get/all');
-                                //echo $response;
                                 ?>
+
                                 </div>
-                                <nav>
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
                             </div>
                         </div>
                     </div>
