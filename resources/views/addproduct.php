@@ -39,6 +39,42 @@
                             <div class="block-heading">
                                 <h2 class="text-info">Add a Item</h2>
                             </div>
+
+                            <?php
+                            echo 'Allahu Akabar';
+
+                            if(isset($_POST['name'])) {
+                                $name=$_POST['name'];
+                                $price=$_POST['price'];
+                                $amount=$_POST['amount'];
+                                $desc=$_POST['desc'];
+                                $shopid=$_POST['shopid'];
+
+                                $curl = curl_init();
+
+                                curl_setopt_array($curl, array(
+                                    CURLOPT_URL => "http://127.0.0.1:8000/api/1.0/foods/add",
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    CURLOPT_ENCODING => "",
+                                    CURLOPT_MAXREDIRS => 10,
+                                    CURLOPT_TIMEOUT => 0,
+                                    CURLOPT_FOLLOWLOCATION => true,
+                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    CURLOPT_CUSTOMREQUEST => "POST",
+                                    CURLOPT_POSTFIELDS =>"{\r\n    \"name\": \"$name\",\r\n    \"price\": \"$price\",\r\n    \"amount\": \"$amount\",\r\n    \"desc\": \"$desc\",\r\n    \"shopid\": \"$shopid\"\r\n}",
+                                    CURLOPT_HTTPHEADER => array(
+                                        "Content-Type: application/json"
+                                    ),
+                                ));
+                                $response = curl_exec($curl);
+                                curl_close($curl);
+                                echo "ajkdjelk $response";
+                            }
+
+
+
+                            echo <<<FR
+
                             <form class="shadow-lg" method="post" >
                                 <div class="form-group">
                                     <label>Name</label>
@@ -54,10 +90,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input class="shadow-sm form-control" type="password" id="password" required="">
+                                    <input class="shadow-sm form-control" type="text" id="desc" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label >Shop ID</label>
+                                    <input class="shadow-sm form-control" type="text" id="shopid" value="SOB" inputmode="text" required="">
                                 </div>
                                 <button class="btn btn-success btn-block btn-lg" type="submit">Add</button>
                             </form>
+
+                            FR;
+                            ?>
                         </div>
                     </section>
                 </div>

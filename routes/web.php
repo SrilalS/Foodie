@@ -27,6 +27,11 @@ Route::get('/addproduct', function () {
     return view('addproduct');
 });
 
+Route::post('/addproduct', function () {
+    return view('addproduct');
+});
+
+
 //API
 
 //Users

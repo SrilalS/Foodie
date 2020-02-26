@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <html>
 
 <head>
@@ -37,6 +41,10 @@
                             <div class="block-heading">
                                 <h2 class="text-info">Log In</h2>
                             </div>
+                            <?php
+
+                            echo <<<FRM
+
                             <form class="shadow-lg">
                                 <div class="form-group"><label for="email">Student ID</label><input class="shadow-sm form-control item" type="email" id="email"></div>
                                 <div class="form-group"><label for="password">Password</label><input class="shadow-sm form-control" type="password" id="password"></div>
@@ -46,6 +54,9 @@
                                 <div class="col" style="padding-top: 15px;"><a href="#">Forgot Password?</a></div>
                                 <div class="col"><a href="#">New Here?</a></div>
                             </form>
+
+                            FRM;
+                            ?>
                         </div>
                     </section>
                 </div>
