@@ -34,7 +34,6 @@ class FoodsController extends Controller
         ],);
 
         return redirect('/catalog');
-        return response()-> json(['code'=>'Success!'],200);
     }
 
     public function getFood(Request $request){

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,11 +24,10 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="catalog.html">All Items</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart.html">Cart (0)</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="account.html">My Account</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="bprofile.php">My Account</a></li>
                 </ul>
             </div>
         </div>

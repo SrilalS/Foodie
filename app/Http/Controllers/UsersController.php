@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,8 @@ class UsersController extends Controller
         $fname = $request->input('fname');
         $lname = $request->input('lname');
         $stdid = $request->input('stdid');
+
+        $acctype = $request->input('acctype');
 
         $pws = $request->input('password');
         $mobile = $request->input('mobile');
@@ -64,25 +67,37 @@ class UsersController extends Controller
             'batch' => $batch,
             'fname' => $fname,
             'lname' => $fname,
+            'acctype' => $acctype,
         ],);
 
 
         return response()->json(['code'=>'User Added!'],200);
         }
-        
 
-        
+
+
     }
-    
+
     public function login(Request $requestget){
         $stdid = $requestget->input('stdid');
         $pws = $requestget->input('password');
 
         $checkpws = DB::table('users')->where('stdid',$stdid)->value('password');
         $checkstdid = DB::table('users')->where('stdid',$stdid)->value('stdid');
+        $usertype = DB::table('users')->where('stdid',$stdid)->value('acctype');
 
         if ($stdid === $checkstdid){
             if (hash('sha256', $pws)== $checkpws) {
+                if ($usertype == 'Seller'){
+                    session()->put('lgd','1');
+                    session()->put('id',$stdid);
+                    return redirect()->route('sprofile');
+                }
+
+                if ($usertype == 'Buyer'){
+                    session()->put('lgd','1');
+                    return redirect()->route('bprofile');
+                }
                 return response()->json(['code'=>'Success!'],200);
             } else {
                 return response()->json(['code'=>'Wrong Student ID or Password!'],401);
@@ -91,26 +106,26 @@ class UsersController extends Controller
             return response()->json(['code'=>'Wrong Student ID or Password!'],402);
         }
 
-        
+
     }
 
     public function update(Request $requestupdate){
-        $fname = $request->input('fname');
-        $lname = $request->input('lname');
-        $stdid = $request->input('stdid');
+        $fname = $requestupdate->input('fname');
+        $lname = $requestupdate->input('lname');
+        $stdid = $requestupdate->input('stdid');
 
-        $pws = $request->input('password');
-        $mobile = $request->input('mobile');
+        $pws = $requestupdate->input('password');
+        $mobile = $requestupdate->input('mobile');
 
-        $nic = $request->input('nic');
-        $email = $request->input('email');
-        $dob = $request->input('dob');
+        $nic = $requestupdate->input('nic');
+        $email = $requestupdate->input('email');
+        $dob = $requestupdate->input('dob');
 
-        $faculty = $request->input('faculty');
-        $batch = $request->input('batch');
-        $avatar = $request->input('avatar');
+        $faculty = $requestupdate->input('faculty');
+        $batch = $requestupdate->input('batch');
+        $avatar = $requestupdate->input('avatar');
 
         //TO-DO//
-        
+
     }
 }

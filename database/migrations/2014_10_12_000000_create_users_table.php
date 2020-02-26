@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('dob');
             $table->string('faculty');
             $table->string('batch');
+            $table->string('acctype');
             //$table->string('avatar');
             $table->rememberToken();
             $table->timestamps();

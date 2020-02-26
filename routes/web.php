@@ -13,7 +13,7 @@
 //UI
 Route::get('/', function () {
     return view('login');
-});
+})->name('index');
 
 Route::get('/catalog', function () {
     return view('catalog');
@@ -26,8 +26,20 @@ Route::get('/product', function () {
 Route::get('/addproduct', function () {
     return view('addproduct');
 });
+
+Route::get('/accountSeller', function () {
+    return view('sprofile');
+})->name('sprofile');
+
+Route::get('/accountBuyer', function () {
+    return view('bprofile');
+})->name('bprofile');
+
 Route::post('/addproduct','FoodsController@addFood');
 
+Route::post('/accountSeller','NavController@Logout');
+
+Route::post('/','UsersController@login');
 
 //API
 

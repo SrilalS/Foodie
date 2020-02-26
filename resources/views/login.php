@@ -45,14 +45,25 @@ session_start();
 
                             echo <<<FRM
 
-                            <form class="shadow-lg">
-                                <div class="form-group"><label for="email">Student ID</label><input class="shadow-sm form-control item" type="email" id="email"></div>
-                                <div class="form-group"><label for="password">Password</label><input class="shadow-sm form-control" type="password" id="password"></div>
+                            <form class="shadow-lg" method="post">
                                 <div class="form-group">
-                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox"><label class="form-check-label" for="checkbox">Remember me</label></div>
-                                </div><button class="btn btn-primary btn-block" type="submit">Log In</button>
-                                <div class="col" style="padding-top: 15px;"><a href="#">Forgot Password?</a></div>
-                                <div class="col"><a href="#">New Here?</a></div>
+                                <label for="email">ID Number</label>
+                                <input class="shadow-sm form-control item" type="text" name="stdid">
+                                </div>
+                                <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="shadow-sm form-control" type="password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkbox">
+                                    <label class="form-check-label" for="checkbox">Remember me</label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                                <div class="col" style="padding-top: 15px;">
+                                <a href="mailto:Srilalsachintha@Gmail.com">Forgot Password?</a>
+                                </div>
                             </form>
 
                             FRM;
@@ -63,11 +74,6 @@ session_start();
             </div>
         </div>
     </div>
-    <footer class="page-footer dark">
-        <div class="footer-copyright">
-            <p>© 2020 Foodie.com</p>
-        </div>
-    </footer>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
