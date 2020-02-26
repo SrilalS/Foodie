@@ -26,10 +26,7 @@ Route::get('/product', function () {
 Route::get('/addproduct', function () {
     return view('addproduct');
 });
-
-Route::post('/addproduct', function () {
-    return view('addproduct');
-});
+Route::post('/addproduct','FoodsController@addFood');
 
 
 //API

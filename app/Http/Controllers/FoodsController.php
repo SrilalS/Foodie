@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -22,7 +23,6 @@ class FoodsController extends Controller
         $shopid = $request->input('shopid');
 
         $desc = $request->input('desc');
-
         $photo = $request->input('avatar');
 
         DB::table('foods')->insert([
@@ -33,6 +33,7 @@ class FoodsController extends Controller
             'shopid' => $shopid,
         ],);
 
+        return redirect('/catalog');
         return response()-> json(['code'=>'Success!'],200);
     }
 
