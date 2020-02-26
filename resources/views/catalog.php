@@ -98,12 +98,12 @@
                                     $shopid = $arc[$i]['shopid'];
                                     echo <<<ITM
 
-                                    <div class="">
+                                    <div class="col-12 col-md-6 col-lg-4">
                                         <div class="clean-product-item $shopid">
                                             <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.png"></a></div>
                                             <div class="product-name"><a href="#">$name</a></div>
                                             <h5>$desc</h5>
-                                            <h1 hidden>$shopid</h1>
+                                            <h5>From : $shopid</h5>
                                             <div class="about">
 
                                             <br>

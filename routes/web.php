@@ -23,6 +23,10 @@ Route::get('/product', function () {
     return view('product');
 });
 
+Route::get('/addproduct', function () {
+    return view('addproduct');
+});
+
 //API
 
 //Users
