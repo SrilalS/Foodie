@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+$islogged = session('lgd');
+$usrtype = session('acctype');
+if ($islogged == '1'){
+    header('Location: http://127.0.0.1:8000/account'.$usrtype);
+    die();
+}
+
 ?>
 
 <html>
@@ -26,7 +34,16 @@ session_start();
                     <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shops">Shops</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart">Cart (0)</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="account">My Account</a></li>
+                    <?php
+                    $usrtype = session('acctype');
+                    $path = 'accountSeller';
+                    if ($usrtype =='Buyer'){
+                        $path = 'accountBuyer';
+                    }
+                    echo <<< NAV
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
+                    NAV;
+                    ?>
                 </ul>
             </div>
         </div>

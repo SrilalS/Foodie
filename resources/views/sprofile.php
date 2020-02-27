@@ -34,7 +34,16 @@ if ($islogged !=='1'){
                         <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart.html">Cart (0)</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="account">My Account</a></li>
+                        <?php
+                        $usrtype = session('acctype');
+                        $path = 'accountSeller';
+                        if ($usrtype =='Buyer'){
+                            $path = 'accountBuyer';
+                        }
+                        echo <<< NAV
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
+                        NAV;
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -64,8 +73,10 @@ if ($islogged !=='1'){
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                     <button class="btn btn-primary btn-block" type="submit">View Selling History</button>
-                                    <button class="btn btn-success btn-block" type="submit">View My Items</button>
-                                    <button class="btn btn-primary btn-block" type="submit">Add a New Item</button>
+                                        <button class="btn btn-success btn-block" type="submit">View My Items</button>
+                                        <a href="http://127.0.0.1:8000/addproduct">
+                                            <button class="btn btn-primary btn-block" type="submit">Add a New Item</button>
+                                        </a>
                                         <?php
                                         echo <<< FR
                                         <form method="post" >

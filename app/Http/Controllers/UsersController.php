@@ -85,17 +85,19 @@ class UsersController extends Controller
         $checkpws = DB::table('users')->where('stdid',$stdid)->value('password');
         $checkstdid = DB::table('users')->where('stdid',$stdid)->value('stdid');
         $usertype = DB::table('users')->where('stdid',$stdid)->value('acctype');
-
         if ($stdid === $checkstdid){
             if (hash('sha256', $pws)== $checkpws) {
                 if ($usertype == 'Seller'){
                     session()->put('lgd','1');
                     session()->put('id',$stdid);
+                    session()->put('acctype',$usertype);
                     return redirect()->route('sprofile');
                 }
 
                 if ($usertype == 'Buyer'){
                     session()->put('lgd','1');
+                    session()->put('id',$stdid);
+                    session()->put('acctype',$usertype);
                     return redirect()->route('bprofile');
                 }
                 return response()->json(['code'=>'Success!'],200);

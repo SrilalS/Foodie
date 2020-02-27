@@ -27,7 +27,16 @@ session_start();
                     <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart.html">Cart (0)</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="bprofile.php">My Account</a></li>
+                    <?php
+                    $usrtype = session('acctype');
+                    $path = 'accountSeller';
+                    if ($usrtype =='Buyer'){
+                        $path = 'accountBuyer';
+                    }
+                    echo <<< NAV
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
+                    NAV;
+                    ?>
                 </ul>
             </div>
         </div>

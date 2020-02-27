@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +26,16 @@
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="catalog">All Items</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart.html">Cart (0)</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="bprofile.php">My Account</a></li>
+                    <?php
+                    $usrtype = session('acctype');
+                    $path = 'accountSeller';
+                    if ($usrtype =='Buyer'){
+                        $path = 'accountBuyer';
+                    }
+                    echo <<< NAV
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
+                    NAV;
+                    ?>
                 </ul>
             </div>
         </div>
@@ -127,11 +139,6 @@
             </div>
         </section>
     </main>
-    <footer class="page-footer dark">
-        <div class="footer-copyright">
-            <p>© 2020 Foodie.com</p>
-        </div>
-    </footer>
     <script src="assets/js/catalog.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
