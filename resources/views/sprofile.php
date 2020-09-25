@@ -7,6 +7,14 @@ $islogged = session('lgd');
 if ($islogged !=='1'){
     header('Location: http://127.0.0.1:8000/');
     die();
+} else {
+    $shopname = session('shopname');
+    $fname = session('fname');
+    $lname = session('lname');
+    $email = session('email');
+    $mobile = session('mobile');
+
+
 }
 ?>
     <!DOCTYPE html>
@@ -26,47 +34,85 @@ if ($islogged !=='1'){
     </head>
 
     <body>
-        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-            <div class="container"><a class="navbar-brand logo" href="#">Foodie</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse"
-                    id="navcol-1">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart.html">Cart (0)</a></li>
-                        <?php
-                        $usrtype = session('acctype');
-                        $path = 'accountSeller';
-                        if ($usrtype =='Buyer'){
-                            $path = 'accountBuyer';
-                        }
-                        echo <<< NAV
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
-                        NAV;
-                        ?>
-                    </ul>
-                </div>
+
+
+
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#">Foodie</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class = "collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
+                    <?php
+                    if (session('crt')!==null) {
+                        $count = count(session('crt'));
+                    } else {
+                        $count = 0;
+                    }
+                    echo <<< CR
+
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="cart">Cart ($count)</a></li>
+                    CR;
+                    $usrtype = session('acctype');
+                    $path = 'accountSeller';
+                    if ($usrtype =='Buyer'){
+                        $path = 'accountBuyer';
+                    }
+                    echo <<< NAV
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
+                    NAV;
+
+                    if ($shopname !== null) {
+                        echo <<< NV
+
+
+                        <button class="btn btn-danger">View Orders (0)</button>
+                        NV;
+                    }
+                    ?>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
         <main class="page payment-page">
             <section class="clean-block payment-form dark">
                 <div class="container">
                     <div class="block-heading">
-                        <h2 class="text-info">Hi SHOP!</h2>
-                    </div>
+                        <?php
 
-                    <div class="form shadow-lg" >
+                         echo <<< NM
+                                    <h2 class="text-info">Hi $shopname!</h2>
+                                  NM;
+                        ?>
+                    </div>
+                    <?php
+                    echo <<< DTL
+                        <div class="form shadow-lg rounded-lg">
+
+
+                        <div class="card-body bg-danger rounded-lg">
+                        <h2 class="text-white ">You Have New Orders!</h2>
+                        <button class="btn btn-success" type="submit">View All</button>
+                        </div>
+
                         <div class="products" style="padding-bottom: 0px;">
-                            <h3 class="title">Account Details</h3>
-                            <div class="item"><span class="price">$200</span>
-                                <p class="item-name">Product 1</p>
-                                <p class="item-description">Lorem ipsum dolor sit amet</p>
+                            <h3 class="">Account Details</h3>
+
+                            <div class="item"><span class="price">$fname $lname</span>
+                                <p class="item-name">Owner</p>
                             </div>
-                            <div class="item"><span class="price">$120</span>
-                                <p class="item-name">Product 2</p>
-                                <p class="item-description">Lorem ipsum dolor sit amet</p>
+
+                            <div class="item"><span class="price">$email</span>
+                                <p class="item-name">Email</p>
+                            </div>
+
+                            <div class="item"><span class="price">$mobile</span>
+                                <p class="item-name">Phone Number</p>
                             </div>
                         </div>
+                        DTL;
+                        ?>
                         <div class="card-details" style="padding-top: 0px;">
 
                             <div class="form-row">

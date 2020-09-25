@@ -1,21 +1,14 @@
 <?php
 session_start();
-
-
-$islogged = session('lgd');
-
-if ($islogged !=='1'){
-    header('Location: http://127.0.0.1:8000/');
-    die();
-}
-
 ?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Payment - Foodie</title>
+    <title>Home - Foodie</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
@@ -25,7 +18,7 @@ if ($islogged !=='1'){
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
 </head>
 
-<body>
+<body style="background-color: #f6f6f6;">
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
     <div class="container"><a class="navbar-brand logo" href="#">Foodie</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class = "collapse navbar-collapse"
@@ -56,58 +49,58 @@ if ($islogged !=='1'){
         </div>
     </div>
 </nav>
-    <?php
-
-    $fname = session('fname');
-    $lname = session('lname');
-    $email = session('email');
-    $mobile = session('mobile');
-    $faculty = session('faculty');
-    $batch = session('batch');
-
-    echo <<< BLOK
-    <main class="page payment-page">
-        <section class="clean-block payment-form dark">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info">Hi $fname $lname!</h2>
-                </div>
-                    <div class="products">
-                        <h3 class="title">Account Details</h3>
-                        <div class="item"><span class="price">$fname $lname</span>
-                            <p class="item-name">Name</p>
-                        </div>
-                        <div class="item"><span class="price">$email</span>
-                            <p class="item-name">Email</p>
-                        </div>
-                        <div class="item"><span class="price">$mobile</span>
-                            <p class="item-name">Mobile</p>
-                        </div>
-                        <div class="item"><span class="price">$faculty</span>
-                            <p class="item-name">Faculty</p>
-                        </div>
-                       <div class="item"><span class="price">$batch</span>
-                            <p class="item-name">Batch</p>
-                        </div>
-                    </div>
-                    <div class="card-details">
-                        <div class="form-row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                <button class="btn btn-primary btn-block" type="submit">View Purchase History</button>
-                                        <form method="post" >
-                                        <button class="btn btn-danger btn-block" type="submit">Log Out</button>
-                                        </form>
-                                </div>
+    <main class="page landing-page"></main>
+    <div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <section class="text-left clean-block clean-form dark">
+                        <div class="container" style="width: 100%;">
+                            <div class="block-heading">
+                                <h2 class="text-info">Add a Item</h2>
                             </div>
-                        </div>
-                    </div>
-            </div>
-        </section>
-    </main>
-    BLOK;
-    ?>
 
+                            <?php
+
+                            echo <<<FR
+
+                            <form class="shadow-lg" method="post" >
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="shadow-sm form-control item" type="text" name="name" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="shadow-sm form-control" name="email" type="email" id="price" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label >Student ID</label>
+                                    <input class="shadow-sm form-control" type="text" name="stdid" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Faculty</label>
+                                    <input class="shadow-sm form-control" type="text" name="desc" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label >Shop ID</label>
+                                    <input class="shadow-sm form-control" type="text" name="shopid" value="SOB" required="">
+                                </div>
+                                <button class="btn btn-success btn-block btn-lg" type="submit">Add</button>
+                            </form>
+
+                            FR;
+                            ?>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer dark">
+        <div class="footer-copyright">
+            <p>© 2020 Foodie.com</p>
+        </div>
+    </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>

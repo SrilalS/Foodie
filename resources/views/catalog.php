@@ -18,28 +18,36 @@ session_start();
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Foodie</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="catalog">All Items</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart.html">Cart (0)</a></li>
-                    <?php
-                    $usrtype = session('acctype');
-                    $path = 'accountSeller';
-                    if ($usrtype =='Buyer'){
-                        $path = 'accountBuyer';
-                    }
-                    echo <<< NAV
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div class="container"><a class="navbar-brand logo" href="#">Foodie</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class = "collapse navbar-collapse"
+             id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
+                <?php
+                if (session('crt')!==null) {
+                    $count = count(session('crt'));
+                } else {
+                    $count = 0;
+                }
+                echo <<< CR
+
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="cart">Cart ($count)</a></li>
+                    CR;
+                $usrtype = session('acctype');
+                $path = 'accountSeller';
+                if ($usrtype =='Buyer'){
+                    $path = 'accountBuyer';
+                }
+                echo <<< NAV
                     <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
                     NAV;
-                    ?>
-                </ul>
-            </div>
+                ?>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     <main class="page catalog-page">
         <section class="clean-block clean-catalog dark">
             <div class="container">
@@ -112,8 +120,14 @@ session_start();
 
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <div class="clean-product-item $shopid">
-                                            <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.png"></a></div>
-                                            <div class="product-name"><a href="#">$name</a></div>
+                                            <div class="image">
+                                            <a href="#">
+                                                <img class="img-fluid d-block mx-auto" src="assets/img/tech/image1.png">
+                                            </a>
+                                            </div>
+                                            <div class="product-name">
+                                                <a href="product?id=$id">$name</a>
+                                            </div>
                                             <h5>$desc</h5>
                                             <h5>From : $shopid</h5>
                                             <div class="about">

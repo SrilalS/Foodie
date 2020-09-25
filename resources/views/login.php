@@ -26,28 +26,36 @@ if ($islogged == '1'){
 </head>
 
 <body style="background-color: #f6f6f6;">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">Foodie</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="shops">Shops</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="shopping-cart">Cart (0)</a></li>
-                    <?php
-                    $usrtype = session('acctype');
-                    $path = 'accountSeller';
-                    if ($usrtype =='Buyer'){
-                        $path = 'accountBuyer';
-                    }
-                    echo <<< NAV
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div class="container"><a class="navbar-brand logo" href="#">Foodie</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class = "collapse navbar-collapse"
+             id="navcol-1">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" href="catalog">All Items</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="shops.html">Shops</a></li>
+                <?php
+                if (session('crt')!==null) {
+                    $count = count(session('crt'));
+                } else {
+                    $count = 0;
+                }
+                echo <<< CR
+
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="cart">Cart ($count)</a></li>
+                    CR;
+                $usrtype = session('acctype');
+                $path = 'accountSeller';
+                if ($usrtype =='Buyer'){
+                    $path = 'accountBuyer';
+                }
+                echo <<< NAV
                     <li class="nav-item" role="presentation"><a class="nav-link" href="$path">My Account</a></li>
                     NAV;
-                    ?>
-                </ul>
-            </div>
+                ?>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     <main class="page landing-page"></main>
     <div>
         <div class="container">

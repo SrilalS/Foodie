@@ -66,7 +66,7 @@ class UsersController extends Controller
             'faculty' => $faculty,
             'batch' => $batch,
             'fname' => $fname,
-            'lname' => $fname,
+            'lname' => $lname,
             'acctype' => $acctype,
         ],);
 
@@ -85,19 +85,47 @@ class UsersController extends Controller
         $checkpws = DB::table('users')->where('stdid',$stdid)->value('password');
         $checkstdid = DB::table('users')->where('stdid',$stdid)->value('stdid');
         $usertype = DB::table('users')->where('stdid',$stdid)->value('acctype');
+
+        $fname = DB::table('users')->where('stdid',$stdid)->value('fname');
+        $lname = DB::table('users')->where('stdid',$stdid)->value('lname');
+        $email = DB::table('users')->where('stdid',$stdid)->value('email');
+        $mobile = DB::table('users')->where('stdid',$stdid)->value('mobile');
+
+
+
         if ($stdid === $checkstdid){
             if (hash('sha256', $pws)== $checkpws) {
                 if ($usertype == 'Seller'){
+                    $shopname = DB::table('users')->where('stdid',$stdid)->value('shopname');
                     session()->put('lgd','1');
                     session()->put('id',$stdid);
                     session()->put('acctype',$usertype);
+
+                    session()->put('email',$email);
+                    session()->put('mobile',$mobile);
+
+                    session()->put('fname',$fname);
+                    session()->put('lname',$lname);
+
+                    session()->put('shopname',$shopname);
                     return redirect()->route('sprofile');
                 }
 
                 if ($usertype == 'Buyer'){
+                    $faculty = DB::table('users')->where('stdid',$stdid)->value('faculty');
+                    $batch = DB::table('users')->where('stdid',$stdid)->value('batch');
+
+
                     session()->put('lgd','1');
                     session()->put('id',$stdid);
                     session()->put('acctype',$usertype);
+
+                    session()->put('fname',$fname);
+                    session()->put('lname',$lname);
+                    session()->put('email',$email);
+                    session()->put('mobile',$mobile);
+                    session()->put('faculty',$faculty);
+                    session()->put('batch',$batch);
                     return redirect()->route('bprofile');
                 }
                 return response()->json(['code'=>'Success!'],200);

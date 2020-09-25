@@ -15,12 +15,9 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('orderid')->unique();
-            $table->string('foodid');
-            $table->string('shopid');
-            $table->string('amount');
-            $table->string('price');
+            $table->string('OrderJSON');//ID first, amount second.
             $table->string('stdid');
-            $table->string('time');
+            $table->string('timetopickup')->nullable();
             $table->timestamps();
         });
     }

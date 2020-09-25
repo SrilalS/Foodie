@@ -31,7 +31,7 @@ class OrdersController extends Controller
             return response()->json(['Code'=>"Not Enough Is Remaining!"],400);
 
         } else {
-            
+
             DB::table('orders')->insert([
                 'foodid'=>$foodid,
                 'stdid'=>$stdid,
@@ -51,8 +51,8 @@ class OrdersController extends Controller
 
     public function completeOrder(Response $response)
     {
-        $orderid = $request->input('orderid');
-        $shopid = $request->input('shopid');
+        $orderid = $response->input('orderid');
+        $shopid = $response->input('shopid');
 
         $order = (int)DB::table('orders')->where('orderid',$orderid)->get();
 

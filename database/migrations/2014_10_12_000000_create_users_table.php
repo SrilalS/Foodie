@@ -23,9 +23,11 @@ class CreateUsersTable extends Migration
             $table->string('stdid')->unique();
             $table->string('nic')->unique();
             $table->string('dob');
-            $table->string('faculty');
-            $table->string('batch');
+            $table->string('faculty')->nullable();
+            $table->string('batch')->nullable();
             $table->string('acctype');
+            $table->string('shopname')->nullable();
+
             //$table->string('avatar');
             $table->rememberToken();
             $table->timestamps();
